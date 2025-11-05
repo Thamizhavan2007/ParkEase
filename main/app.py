@@ -1,5 +1,6 @@
 # app/main.py
 from fastapi import FastAPI, HTTPException, Body
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pymongo import MongoClient
 from datetime import datetime, timedelta
@@ -9,6 +10,15 @@ import math
 import os
 
 app = FastAPI()
+
+#CORS 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:8080"],  # Your frontend dev server
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # MongoDB Connection
 MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://nt:123@smartparkingcluster.oukhdsg.mongodb.net/")
