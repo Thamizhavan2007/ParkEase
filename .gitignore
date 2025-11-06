@@ -97,7 +97,7 @@ Thumbs.db
 data/
 dump/
 *.bson
-*.json
+
 
 # --- OS junk files ---
 .DS_Store
